@@ -1,0 +1,63 @@
+
+<html>
+<header>
+    <title>Minesweeper</title>
+</header>
+<body id='body' onload='refresh();' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
+    <div  class='header'> Mine : <span style="margin-right: 30px;" >30</span>Time : <span id="seconds" ></span></div><!-- Player indicator white move or black move-->
+    <div id="board" class='board'></div><!-- The board -->
+</body>
+<style>
+    .row{
+        width: 100%;
+        display: flex;
+        justify-content: between;
+    }
+    .header {
+        background-color: black;
+        color: white;
+        text-align: center;
+        width: 100%;
+    }
+
+    .board {
+        width: 100%;
+        height: 100%;
+    }
+    .closed_square{
+        background-color:rgb(70, 69, 69);
+        min-height: 30px;
+        min-width: 30px;
+    }
+    .open_square{
+        background-color:white;
+        min-height: 30px;
+        min-width: 30px;
+    }
+    .flag_square{
+        background-color:green;
+        min-height: 30px;
+        min-width: 30px;
+    }
+    .bomb_square{
+        background-color:red;
+        min-height: 30px;
+        min-width: 30px;
+    }
+    .question_square{
+        background-color:yellow;
+        min-height: 30px;
+        min-width: 30px;
+    }
+    .number_square{
+        background-color:rgba(138, 138, 138, 0.966);
+        min-height: 30px;
+        min-width: 30px;
+    }
+    
+
+
+</style>
+<script src='js/minesweeper.js'>
+</script>
+</html>
