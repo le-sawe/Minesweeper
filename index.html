@@ -3,15 +3,15 @@
 <header>
     <title>Minesweeper</title>
 </header>
-<body id='body' onload='refresh();' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
-    <div  class='header'> Mine : <span style="margin-right: 30px;" >30</span>Time : <span id="seconds" ></span></div><!-- Player indicator white move or black move-->
+<body id='body' onload='start_board();' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
+    <div  class='header'> Mine : <span id="bomb_indicator" style="margin-right: 30px;" ></span>Time <span id="minutes"></span>:<span id="seconds"></span> <button style='margin-left:40px;' onclick="start_board();">RESTART</button></div><!-- Player indicator white move or black move-->
     <div id="board" class='board'></div><!-- The board -->
 </body>
 <style>
     .row{
         width: 100%;
         display: flex;
-        justify-content: between;
+        justify-content: center;
     }
     .header {
         background-color: black;
@@ -28,6 +28,7 @@
         background-color:rgb(70, 69, 69);
         min-height: 30px;
         min-width: 30px;
+        
     }
     .open_square{
         background-color:white;
@@ -35,19 +36,31 @@
         min-width: 30px;
     }
     .flag_square{
-        background-color:green;
+        background-color:rgb(70, 69, 69);
         min-height: 30px;
         min-width: 30px;
+        background-image: url('image/flag.png');
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
     }
     .bomb_square{
-        background-color:red;
+        background-color:rgb(70, 69, 69);
         min-height: 30px;
         min-width: 30px;
+        background-image: url('image/bomb.png');
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
     }
     .question_square{
-        background-color:yellow;
+        background-color:rgb(70, 69, 69);
         min-height: 30px;
         min-width: 30px;
+        background-image: url('image/question.png');
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
     }
     .number_square{
         background-color:rgba(138, 138, 138, 0.966);
