@@ -3,8 +3,8 @@
 <header>
     <title>Minesweeper</title>
 </header>
-<body id='body' onload='start_board();' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
-    <div  class='header'> Mine : <span id="bomb_indicator" style="margin-right: 30px;" ></span>Time <span id="minutes"></span>:<span id="seconds"></span> <button style='margin-left:40px;' onclick="start_board();">RESTART</button></div><!-- Player indicator white move or black move-->
+<body id='body' onload='start_board(0);' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
+    <div  class='header'> Mine : <span id="bomb_indicator" style="margin-right: 30px;" ></span>Time <span id="minutes"></span>:<span id="seconds"></span> <button style='margin-left:40px;' onclick="start_board(2);">RESTART</button><button style='margin-left:40px;' onclick="start_board(1);">Advance settings</button></div><!-- Player indicator white move or black move-->
     <div id="board" class='board'></div><!-- The board -->
 </body>
 <style>

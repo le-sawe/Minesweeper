@@ -1,23 +1,27 @@
-var board_height =15;
-var board_width =20;
-var bomb_number =30;
-var sec = 0;
-var bomb_indicator=bomb_number;
+var board_height =15; // board rows
+var board_width =20; // board colums
+var bomb_number =30; // bomb number
+var sec = 0; // initial value for the second variable
 // bomb_map initialization
 var bomb_map =[];// 0 mean vide , 9 mean bomb , any number between 1 and 8 is the number of surronded bomb
 var interface=[];// 0 mean closed ,9 mean oppened , 10 mean flag ,11 mean bomb , 12 mean question mark ,any number between 1 and 8 is the number of surronded bomb
 var row =[];
-var start = false;  
-the_board =document.getElementById("board");
-function start_board(){
-   // board_height = prompt("Please enter board height:", 15);
-    //board_width = prompt("Please enter board width:", 20);
-    //bomb_number = prompt("Please enter bomb number:", 30);
+var start = false;  // boolean variable for the game status
+the_board =document.getElementById("board"); // get the board
+function start_board(status){   
+    if (status !=2){
+        board_height =15;
+        board_width =20;
+        bomb_number =30;   
+    }
+    if (status==1){
+    board_height = prompt("Please enter board height:", 15);
+    board_width = prompt("Please enter board width:", 20);
+    bomb_number = prompt("Please enter bomb number:", 30);
+
+    }
     sec = 0;
-    board_height =15;
-    board_width =20;
-    bomb_number =30;
-    bomb_indicator=bomb_number;
+    
    // bomb_map initialization
     bomb_map =[];// 0 mean vide , 9 mean bomb , any number between 1 and 8 is the number of surronded bomb
     interface=[];// 0 mean closed ,9 mean oppened , 10 mean flag ,11 mean bomb , 12 mean question mark ,any number between 1 and 8 is the number of surronded bomb
@@ -78,7 +82,7 @@ function refresh(){
     // check for win
     check_win();
     // refresh the bomb indicator
-    document.getElementById("bomb_indicator").innerHTML=bomb_indicator;
+    document.getElementById("bomb_indicator").innerHTML=bomb_number-flag_counter();
     // clear the board
     the_board.innerHTML='';   
     // print the updated board
@@ -104,8 +108,8 @@ function refresh(){
 }
 
 function right_click(y,x){
-    if (interface[y][x]==0 && bomb_indicator>0){interface[y][x]=10;bomb_indicator--;}// set a flag
-    else if (interface[y][x]==10){interface[y][x]=12;bomb_indicator++;}// set a question mark
+    if (interface[y][x]==0 && bomb_number-flag_counter()>0){interface[y][x]=10;}// set a flag
+    else if (interface[y][x]==10){interface[y][x]=12;}// set a question mark
     else if (interface[y][x]==12)interface[y][x]=0;// retrun
     refresh();
 }
@@ -117,21 +121,30 @@ function open1(y,x){
     if (bomb_map[y][x] ==9)game_over();
     // if you open a vide square the square will open and the surrond vide square will open
     else if (bomb_map[y][x] ==0){
-        // if you open a square with a flag on it it will counted
-        if (interface[y][x]==10)bomb_indicator++;
+     
         interface[y][x]=9;// open the square
         successive_open1(); // open the surrondd squares
     }
     // if a number square oppened the number will apear
     else{
         interface[y][x] =bomb_map[y][x];
-        // if the oppened square has a flag the flag will counted
-        if (interface[y][x]==10)bomb_indicator++;
+       
     }
     refresh();
 }
 // get board element
 
+// bommb_indicator
+function flag_counter(){
+    var bomb_left=0;
+    for(var j=0;j<board_height;j++){
+        for(var i=0;i<board_width;i++){
+            if (interface[j][i]==10)bomb_left++;
+        }
+    }
+    return bomb_left;
+
+}
 
 function game_over(){  
     // stop the time
@@ -181,12 +194,14 @@ function check_win(){
     var z=0,s=0;
     for(var j=0;j<board_height;j++){
         for(var i=0;i<board_width;i++){
-                if(bomb_map[j][i]==9 && interface[j][i]==0)z++;// if we have a flag on bomb z+1
-                if(bomb_map[j][i]==0 && interface[j][i]==9)s++;// if we have oppend square on vide square s++
+                if(bomb_map[j][i]==9 && interface[j][i]==10)z++;// if we have a flag on bomb z+1
+                if(bomb_map[j][i]!=9 && interface[j][i]!=0)s++;// if the square dont have a bomb and the square close s++
         }
     }
-    if(z<bomb_number)return false;// if we dont cover all the bomb return false
-    if(s<(board_width * board_width)-bomb_number)return false;// if still a vide square not oppened return false
+
+    if(z==bomb_number){console.log("win1");}
+    else if(s==(board_width * board_width)-bomb_number){console.log("win2");}// if still a vide square not oppened return false
+    else return false;// if we dont cover all the bomb return false
     // if win
     // descover the bomb_map
     for(var j=0;j<board_height;j++){
@@ -195,8 +210,8 @@ function check_win(){
         }
     }    
     //refresh the page
-    refresh();
     alert("win");
+    
 }
 // Timer 
 function pad ( val ) { return val > 9 ? val : "0" + val; }
