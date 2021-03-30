@@ -1,9 +1,9 @@
 
 <html>
-<header>
+<head>
     <title>Minesweeper</title>
-    <link rel="shortcut icon" href="image/nuclear-explosion.png" type="image/x-icon">  
-</header>
+    <link rel="icon" href="image/nuclear-explosion.png" type="image/png" sizes="16x16"> 
+</head>
 <body id='body' onload='start_board(0);' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
     <div  class='header'> Mine : <span id="bomb_indicator" style="margin-right: 30px;" ></span>Time <span id="minutes"></span>:<span id="seconds"></span> <button style='margin-left:40px;' onclick="start_board(2);">RESTART</button><button style='margin-left:40px;' onclick="start_board(1);">Advance settings</button></div><!-- Player indicator white move or black move-->
     <div id="board" class='board'></div><!-- The board -->
