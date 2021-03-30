@@ -20,9 +20,12 @@ function start_board(status){   // status 2 mean restart , status 1 mean advance
     }
     // if its a advance option the user can select the board height and width and bomb number
     if (status==1){
+    do{
     board_height = prompt("Please enter board height:", 15);
     board_width = prompt("Please enter board width:", 20);
     bomb_number = prompt("Please enter bomb number:", 30);
+    }while((board_height > 100 || board_height <2) || (board_width > 100 || board_width <2) || (bomb_number > board_height*board_width || bomb_number <1));//make sure that the game will not crash
+    
     }
     // reset the timer
     sec = 0;
