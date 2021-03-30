@@ -6,6 +6,26 @@
 <body id='body' onload='start_board(0);' style="background-image:url(image/wood.jpg);background-size: cover;margin:0;">
     <div  class='header'> Mine : <span id="bomb_indicator" style="margin-right: 30px;" ></span>Time <span id="minutes"></span>:<span id="seconds"></span> <button style='margin-left:40px;' onclick="start_board(2);">RESTART</button><button style='margin-left:40px;' onclick="start_board(1);">Advance settings</button></div><!-- Player indicator white move or black move-->
     <div id="board" class='board'></div><!-- The board -->
+    <div style="color:white;margin-left: 30px;">
+    <h1 >Minesweeper Game</h1>
+        How to play ? <br>
+        <ul>
+            <li>The mines coordination on the board is random</li>
+            <li>If the clicked square not include a bomb , then you will open the squares until you reach a numbers</li>
+            <li>The number indicate the surrounding bomb number</li>
+            <li>if you are sure that this square include a bomb then you can put a flag by pressing right click {you can't open the square when a there a flag on it}</li>
+            <li>if you suspect the square you can put a question mark on it by pressing right click on the flag square {you can open the square on this situation} </li>
+            <li>if you want to reset the square to normal you have to right click on the quesiton mark square </li>
+            <li>the mine indicator decrease after each flag </li>
+            <li>you can restart the game on the same settings by clicking restart </li>
+            <li>you can change the settings (board width , board height , bomb number) by clicking on Advance settings button </li>
+            <li>you will lose if you open a mine</li>
+            <li>you will win if you discover all the safe square or if you put a flag on every bomb square</li>
+        </ul>
+        <span >Have fun ! :) </span><br>
+        <span >The code is on Github : <a href="https://github.com/omencodes/Minesweeper"> <img src="image/github.png" width="20px" alt="" srcset=""> </a></span><br>
+        <a href="https://www.omencodes.com/" style="color:red;text-decoration:none;" >www.omencodes.com</a>
+    </div>
 </body>
 <style>
     .row{
@@ -22,7 +42,7 @@
 
     .board {
         width: 100%;
-        height: 100%;
+        
     }
     .closed_square{
         background-color:rgb(70, 69, 69);
@@ -40,6 +60,15 @@
         min-height: 30px;
         min-width: 30px;
         background-image: url('image/flag.png');
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+    }
+    .nuclear_square{
+        background-color:rgb(70, 69, 69);
+        min-height: 30px;
+        min-width: 30px;
+        background-image: url('image/nuclear-explosion.png');
         background-position: center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
         background-size: cover; /* Resize the background image to cover the entire container */
