@@ -12,6 +12,7 @@ var the_board =document.getElementById("board"); // get the board
 
 // Genereate the board data
 function start_board(status){   // status 2 mean restart , status 1 mean advanced option ,0 mean start
+    loose =false
     // use default value if its not restart (if its restart the old value will remain)
     if (status !=2){        
         board_height =15;
