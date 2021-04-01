@@ -123,15 +123,19 @@ function square_click(event,y,x){
 
 // open the selected square (from closed square to open square)
 function open_the_square(y,x){
+    if(interface[y][x] != 10){// if there no flage on the square
     // if you open a bomb square --> game over
-    if (bomb_map[y][x] ==9)loose=true;
+    if (bomb_map[y][x] ==9 )loose=true;
     // if you open a vide square the square will open and the surrond vide square will open
-    else if (bomb_map[y][x] ==0){    
+    else if (bomb_map[y][x] ==0 ){    
         interface[y][x]=9;// open the square
         successive_open_the_square(); // open the surrondd squares
     }
     // if a number square oppened the number will apear
     else{interface[y][x] =bomb_map[y][x];}   
+
+    }
+    
 }
 
 // open the selected square and the surrounding square
